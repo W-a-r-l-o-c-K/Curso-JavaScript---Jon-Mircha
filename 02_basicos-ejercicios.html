@@ -188,9 +188,9 @@
         return console.warn(`El dato introducido '${numero}' es incorrecto, debes introducir un número.`)
       } else if (numero === 0 || Math.sign(numero) === -1) {
         return console.warn('El número no puede ser 0, ni puede ser negativo.');
-      } else if (typeof numero === 'number'  &&  Math.sign(numero) === 1) {
+      } else if (typeof numero === 'number' && Math.sign(numero) === 1) {
         let factorial = 1;
-        for (let i = numero; i > 1; i--){
+        for (let i = numero; i > 1; i--) {
           factorial *= i;
           //return console.info(factorial);
         }
@@ -200,7 +200,7 @@
     factorial(); // El dato introducido 'undefined' es incorrecto, debes introducir un número.
     factorial(0);  // El número no puede ser 0, ni puede ser negativo.
     factorial('5'); // El dato introducido '5' es incorrecto, debes introducir un número.
-    factorial([1,2,3]); // El dato introducido '1,2,3' es incorrecto, debes introducir un número.
+    factorial([1, 2, 3]); // El dato introducido '1,2,3' es incorrecto, debes introducir un número.
     factorial(-5); // El número no puede ser 0, ni puede ser negativo.
     factorial(5); // El factorial de 5 es : 120
 
@@ -212,27 +212,27 @@
     const esPrimo = (numero = undefined) => {
       if (typeof numero !== 'number') {
         return console.warn(`El dato introducido '${numero}' es incorrecto, debes introducir un número.`)
-      } else if (numero === 0 || numero === 1 ||Math.sign(numero) === -1) {
+      } else if (numero === 0 || numero === 1 || Math.sign(numero) === -1) {
         return console.warn('El número no puede ser 0 o 1, ni puede ser negativo.');
-      } else if (typeof numero === 'number'  &&  Math.sign(numero) === 1) {
+      } else if (typeof numero === 'number' && Math.sign(numero) === 1) {
         // console.info('Numero correcto');
         let divisible = false;
         for (let i = 2; i > numero; i++) {
-          if ((numero % i) === 0){
+          if ((numero % i) === 0) {
             divisible = true;
             break;
           }
         }
         return (divisible)
-        ? console.info(`El número ${numero}, NO es primo.`)
-        : console.info(`El número ${numero}, SI es primo.`)
+          ? console.info(`El número ${numero}, NO es primo.`)
+          : console.info(`El número ${numero}, SI es primo.`)
       }
     }
     esPrimo();          // El dato introducido 'undefined' es incorrecto, debes introducir un número.
     esPrimo(0);         // El número no puede ser 0 o 1, ni puede ser negativo.
     esPrimo(1);         // El número no puede ser 0 o 1, ni puede ser negativo.
     esPrimo('7');       // El dato introducido '7' es incorrecto, debes introducir un número.
-    esPrimo([1,2,3]);   // El dato introducido '1,2,3' es incorrecto, debes introducir un número.
+    esPrimo([1, 2, 3]);   // El dato introducido '1,2,3' es incorrecto, debes introducir un número.
     esPrimo(-7);        // El número no puede ser 0 o 1, ni puede ser negativo.
     esPrimo(7);         // El número 7, SI es primo.
 
@@ -246,8 +246,8 @@
         console.warn(`El dato introducido '${numero}' es incorrecto, debes introducir un número.`);
       } else if (typeof numero === 'number') {
         return ((numero % 2) === 0)
-        ? console.info(`El número ${numero}, es PAR.`)
-        : console.info(`El número ${numero}, es IMPAR.`)
+          ? console.info(`El número ${numero}, es PAR.`)
+          : console.info(`El número ${numero}, es IMPAR.`)
       }
     }
     esPar('2');
@@ -263,15 +263,15 @@
       /// console.log(grados)
       if (typeof numero !== 'number') {
         return console.warn(`El dato introducido '${numero}' en el campo número es incorrecto, debes introducir un número. Ej: convierteGrados(12, 'F');`);
-      } else if (grados === 'c' ||  grados === 'f') {
+      } else if (grados === 'c' || grados === 'f') {
         if (grados === 'c') {
-          convert = (numero * 9/5) +32;
+          convert = (numero * 9 / 5) + 32;
           return console.info(`Grados Celsius: ${numero}º \nGrados Fahrenheit: ${convert.toFixed(1)}º`)
         } else if (grados === 'f') {
-          convert = (numero - 32) * 5/9;
+          convert = (numero - 32) * 5 / 9;
           return console.info(`Grados Fahrenheit: ${numero}º \nGrados Celsius: ${convert.toFixed(1)}º`)
         }
-      } else if (grados !== 'c' ||  grados !== 'f'){
+      } else if (grados !== 'c' || grados !== 'f') {
         return console.warn(`El dato introducido '${tipo}' en el campo tipo es incorrecto, debes introducir un ('c' o 'f'). Ej: convierteGrados(22, 'C');`);
       } else {
         return console.error('Se ha producido un ERROR insperado!!!');
@@ -281,7 +281,7 @@
     convierteGrados(-3, 'F');
     convierteGrados('C', 34);
     convierteGrados(0, 'C');
-    convierteGrados([1,2,3])
+    convierteGrados([1, 2, 3])
     convierteGrados(144, 'F');
     convierteGrados();
 
@@ -289,12 +289,12 @@
 
     /* 15) Programa una función para convertir números de base binaria a decimal y viceversa, pe. miFuncion(100,2) devolverá 4 base 10 */
     console.info('----- Ejercicio 15 -----')
-    const  binToDec = (valor = undefined, base = undefined) => {
+    const binToDec = (valor = undefined, base = undefined) => {
       if (valor === undefined) return console.warn('No ingresaste el número a convertir.');
       if (base === undefined) return console.warn('No ingresaste la base.');
       if (typeof valor !== 'number') return console.warn('El valor tiene que ser un número. Ej. binToDec(100,2)');
       if (typeof base !== 'number') return console.warn('La base tiene que ser un número. Ej. binToDec(100,2)');
-      if (base === 2){
+      if (base === 2) {
         return console.info(`${valor} base ${base} = ${parseInt(valor, base)} base 10.`);
       } else if (base === 10) {
         return console.info(`${valor} base ${base} = ${valor.toString(base)} base 2.`);
@@ -305,11 +305,11 @@
     binToDec();        // No ingresaste el número a convertir.
     binToDec('2');     // No ingresaste la base.
     binToDec(100);     // No ingresaste la base.
-    binToDec('100',2); // El valor tiene que ser un número. Ej. binToDec(100,2)
-    binToDec(100,'2'); // La base tiene que ser un número. Ej. binToDec(100,2)
-    binToDec(101,2);   // 101 base 2 = 5 base 10.
-    binToDec(4,10);    // 4 base 10 = 100 base 2.
-    binToDec(4,12);    // El tipo de base a convertir No es válido. Tiene que ser (2 para convertir a decimal o 10 para binario)
+    binToDec('100', 2); // El valor tiene que ser un número. Ej. binToDec(100,2)
+    binToDec(100, '2'); // La base tiene que ser un número. Ej. binToDec(100,2)
+    binToDec(101, 2);   // 101 base 2 = 5 base 10.
+    binToDec(4, 10);    // 4 base 10 = 100 base 2.
+    binToDec(4, 12);    // El tipo de base a convertir No es válido. Tiene que ser (2 para convertir a decimal o 10 para binario)
 
 
 
@@ -325,7 +325,7 @@
       if (typeof descuento !== 'number') return console.error(`El valor "${descuento}" ingresado No es un número.`);
       if (Math.sign(descuento) === -1) return console.error('El descuento no puede ser negativo.');
 
-      return console.info(`${monto} - ${descuento}% = ${monto - (monto * descuento)/ 100}`);
+      return console.info(`${monto} - ${descuento}% = ${monto - (monto * descuento) / 100}`);
     }
     aplicarDescuento();            // No ingresaste el monto.
     aplicarDescuento('1000');      // El valor "1000" ingresado No es un número.
@@ -341,44 +341,136 @@
 
     /* 17) Programa una función que dada una fecha válida determine cuantos años han pasado hasta el día de hoy, pe. miFuncion(new Date(1984,4,23)) devolverá 35 años (en 2020) */
     console.info('----- Ejercicio 17 -----')
-    const calcularAnios = (fecha = undefined) =>{
+    const calcularAnios = (fecha = undefined) => {
       if (fecha === undefined) return console.warn('No ingresaste la fecha.');
       if (!(fecha instanceof Date)) return console.error('El valor ingresado no es una fecha válida.');
 
       let hoyMenosFecha = new Date().getTime() - fecha.getTime(),
-          aniosEnMiliSegundos = 1000 * 60 * 60 * 24 * 365,
-          aniosHumanos = Math.floor(hoyMenosFecha / aniosEnMiliSegundos);
+        aniosEnMiliSegundos = 1000 * 60 * 60 * 24 * 365,
+        aniosHumanos = Math.floor(hoyMenosFecha / aniosEnMiliSegundos);
 
       return (Math.sign(aniosHumanos) === -1)
-      ? console.info(`Faltan ${Math.abs(aniosHumanos)} años para el ${fecha.getFullYear()}.`)
-      : (Math.sign(aniosHumanos) === 1)
-        ? console.info(`Han pasado ${Math.abs(aniosHumanos)} años desde ${fecha.getFullYear()}.`)
-        : console.info(`Estamos en el año actual ${fecha.getFullYear()}.`)
+        ? console.info(`Faltan ${Math.abs(aniosHumanos)} años para el ${fecha.getFullYear()}.`)
+        : (Math.sign(aniosHumanos) === 1)
+          ? console.info(`Han pasado ${Math.abs(aniosHumanos)} años desde ${fecha.getFullYear()}.`)
+          : console.info(`Estamos en el año actual ${fecha.getFullYear()}.`)
     }
     calcularAnios();                      // No ingresaste la fecha.
     calcularAnios({});                    // El valor ingresado no es una fecha válida.
     calcularAnios(true);                  // El valor ingresado no es una fecha válida.
-    calcularAnios(new Date(1984,4,23));   // Han pasado 38 años desde 1984.
-    calcularAnios(new Date(1884,4,23));   // Han pasado 138 años desde 1884.
-    calcularAnios(new Date(2084,4,23));   // Faltan 62 años para el 2084.
+    calcularAnios(new Date(1984, 4, 23));   // Han pasado 38 años desde 1984.
+    calcularAnios(new Date(1884, 4, 23));   // Han pasado 138 años desde 1884.
+    calcularAnios(new Date(2084, 4, 23));   // Faltan 62 años para el 2084.
 
 
-    
+
 
     /* 18) Programa una función que dada una cadena de texto cuente el número de vocales y consonantes, pe. miFuncion("Hola Mundo") devuelva Vocales: 4, Consonantes: 5 */
     console.info('----- Ejercicio 18 -----')
+    const contarLetras = (cadena = '') => {
+      if (!cadena) return console.warn('No ingresaste ninguna cadena de texto.');
+
+      if (typeof cadena !== 'string') return console.error(`El valor "${cadena}" ingresado, No es una cadena de texto`);
+
+      let vocales = 0, consonantes = 0;
+
+      cadena = cadena.toLowerCase();
+
+      for (let letra of cadena) {
+
+        if (/[aeiouáéíóú]/.test(letra)) vocales++;
+
+        if (/[bcdfghjklmnñpqrstvwxyz]/.test(letra)) consonantes++;
+      }
+      return console.info({
+        cadena,
+        vocales,
+        consonantes
+      });
+    }
+    contarLetras();   // No ingresaste ninguna cadena de texto.
+    contarLetras(3);  // El valor "3" ingresado, No es una cadena de texto
+    contarLetras('Hola mundo');  // {cadena: 'hola mundo', vocales: 4, consonantes: 5}
+    contarLetras('Ñoño');        // {cadena: 'ñoño', vocales: 2, consonantes: 2}
+    contarLetras("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.")  //{cadena: 'lorem ipsum is simply dummy text of the printing a…ldus pagemaker including versions of lorem ipsum.', vocales: 168, consonantes: 299}
+
+
+
 
 
     /* 19) Programa una función que valide que un texto sea un nombre válido, pe. miFuncion("Jonathan MirCha") devolverá verdadero */
     console.info('----- Ejercicio 19 -----')
+    const validarNombre = (nombre = '') => {
+      if (!nombre) return console.warn('No ingresaste un nombre');
+
+      if (typeof nombre !== 'string') return console.error(`El valor "${nombre}" ingresado, NO es una cadena de texto.`);
+
+      let expReg = /^[A-Za-zÑñÁÉÍÓÚáéíóúüÜ\s]+$/g.test(nombre);
+
+      return (expReg)
+        ? console.info(`"${nombre}", es un nombre válido.`)
+        : console.warn(`"${nombre}", NO es un nombre válido.`);
+    }
+    validarNombre();                      // No ingresaste un nombre
+    validarNombre(3);                     // El valor "3" ingresado, NO es una cadena de texto.
+    validarNombre('Jonathan Mircha');     // "Jonathan Mircha", es un nombre válido.
+    validarNombre('Jonathan Mircha, 35'); // "Jonathan Mircha, 35", NO es un nombre válido.
+
+
 
 
     /* 20) Programa una función que valide que un texto sea un email válido, pe. miFuncion("jonmircha@gmail.com") devolverá verdadero */
     console.info('----- Ejercicio 20 -----')
+    const validarEmail = (email = '') => {
+      if (!email) return console.warn('No ingresaste un email');
+
+      if (typeof email !== 'string') return console.error(`El valor "${email}" ingresado, NO es una cadena de texto.`);
+
+      let expReg = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(email);
+
+      return (expReg)
+        ? console.info(`"${email}", es un email válido.`)
+        : console.warn(`"${email}", NO es un email válido.`);
+    }
+    validarEmail();                      // No ingresaste un email
+    validarEmail(34);                    // El valor "34" ingresado, NO es una cadena de texto.
+    validarEmail('jon,mir,cha@gmail');   // "jon,mir,cha@gmail", NO es un email válido.
+    validarEmail('jonmircha@gmail.com'); // "jonmircha@gmail.com", es un email válido.
+
+    console.info('----- Fusión 19 y 20 -----');
+
+    const validarPatron = (cadena = '', patron = undefined) => {
+      if (!cadena) return console.warn('No ingresaste una cadena de texto a evaluar.');
+
+      if (typeof cadena !== 'string') return console.error(`El valor "${cadena}" ingresado, NO es una cadena de texto.`);
+
+      if (patron === undefined) return console.warn('No ingresaste un patrón a evaluar.');
+
+      if (!(patron instanceof RegExp)) return console.error(`El valor "${patron}" ingresado, NO es una expresión regular.`);
+
+      let expReg = patron.test(cadena);
+
+      return (expReg)
+        ? console.info(`"${cadena}", cumple con el patrón ingresado.`)
+        : console.warn(`"${cadena}", NO cumple con el patrón ingresado.`);
+    }
+    validarPatron(); // No ingresaste una cadena de texto a evaluar.
+    validarPatron({}) // El valor "[object Object]" ingresado, NO es una cadena de texto.
+    validarPatron('Hola mundo');  // No ingresaste un patrón a evaluar.
+    validarPatron('Hola mundo', 'hola'); // El valor "hola" ingresado, NO es una expresión regular.
+    validarPatron('Hola mundo', [1,2,3]); // El valor "1,2,3" ingresado, NO es una expresión regular.
+    validarPatron('Jonathan Mircha',/^[A-Za-zÑñÁÉÍÓÚáéíóúüÜ\s]+$/g) // "Jonathan Mircha", cumple con el patrón ingresado.
+    validarPatron('Jonathan Mircha 19',/^[A-Za-zÑñÁÉÍÓÚáéíóúüÜ\s]+$/g)  // "Jonathan Mircha 19", NO cumple con el patrón ingresado.
+    validarPatron('jonmircha@gmail.com', /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i); // "jonmircha@gmail.com", cumple con el patrón ingresado.
+
+
 
 
     /* 21) Programa una función que dado un array numérico devuelve otro array con los números elevados al cuadrado, pe. mi_funcion([1, 4, 5]) devolverá [1, 16, 25] */
     console.info('----- Ejercicio 21 -----')
+
+
+
 
 
     /* 22) Programa una función que dado un array devuelva el número mas alto y el más bajo de dicho array, pe. miFuncion([1, 4, 5, 99, -60]) devolverá [99, -60] */
