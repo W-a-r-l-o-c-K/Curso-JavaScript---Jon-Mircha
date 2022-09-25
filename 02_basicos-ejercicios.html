@@ -458,9 +458,9 @@
     validarPatron({}) // El valor "[object Object]" ingresado, NO es una cadena de texto.
     validarPatron('Hola mundo');  // No ingresaste un patrón a evaluar.
     validarPatron('Hola mundo', 'hola'); // El valor "hola" ingresado, NO es una expresión regular.
-    validarPatron('Hola mundo', [1,2,3]); // El valor "1,2,3" ingresado, NO es una expresión regular.
-    validarPatron('Jonathan Mircha',/^[A-Za-zÑñÁÉÍÓÚáéíóúüÜ\s]+$/g) // "Jonathan Mircha", cumple con el patrón ingresado.
-    validarPatron('Jonathan Mircha 19',/^[A-Za-zÑñÁÉÍÓÚáéíóúüÜ\s]+$/g)  // "Jonathan Mircha 19", NO cumple con el patrón ingresado.
+    validarPatron('Hola mundo', [1, 2, 3]); // El valor "1,2,3" ingresado, NO es una expresión regular.
+    validarPatron('Jonathan Mircha', /^[A-Za-zÑñÁÉÍÓÚáéíóúüÜ\s]+$/g) // "Jonathan Mircha", cumple con el patrón ingresado.
+    validarPatron('Jonathan Mircha 19', /^[A-Za-zÑñÁÉÍÓÚáéíóúüÜ\s]+$/g)  // "Jonathan Mircha 19", NO cumple con el patrón ingresado.
     validarPatron('jonmircha@gmail.com', /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i); // "jonmircha@gmail.com", cumple con el patrón ingresado.
 
 
@@ -481,7 +481,7 @@
           errores.push(numero);
         }
       }
-      if (errores.length > 0){
+      if (errores.length > 0) {
         return console.error(`Los valores '${errores}' ingresados no son números.`);
       }
 
@@ -493,8 +493,8 @@
     devolverCuadrado();               // No ingresaste un arreglo de números.
     devolverCuadrado(true);           // El valor que ingresaste no es un arreglo.
     devolverCuadrado([]);             // El areglo está vacío.
-    devolverCuadrado([1,'2', 3, {}]); // Los valores '2,[object Object]' ingresados no son números.
-    devolverCuadrado([1,4,8]);        // Arreglo original: 1,4,8.  Arreglo elevado al cuadrado: 1,16,64.
+    devolverCuadrado([1, '2', 3, {}]); // Los valores '2,[object Object]' ingresados no son números.
+    devolverCuadrado([1, 4, 8]);        // Arreglo original: 1,4,8.  Arreglo elevado al cuadrado: 1,16,64.
 
 
 
@@ -515,14 +515,14 @@
           errores.push(numero);
         }
       }
-      if (errores.length > 0){
+      if (errores.length > 0) {
         return console.error(`Los valores '${errores}' ingresados no son números.`);
       }
 
       return console.info(`Arreglo original: ${arr}.\nValor mayor: ${Math.max(...arr)} Valor menor: ${Math.min(...arr)}.`);
     }
     devolverMaxMin();                   //  No ingresaste un arreglo de números.
-    devolverMaxMin([1,2,3,9,23,-60]);    // Arreglo original: 1,2,3,9,23,11.  Valor mayor: 23 Valor menor: -60.
+    devolverMaxMin([1, 2, 3, 9, 23, -60]);    // Arreglo original: 1,2,3,9,23,11.  Valor mayor: 23 Valor menor: -60.
     devolverMaxMin([]);                 // El areglo está vacío.
 
 
@@ -544,7 +544,7 @@
           errores.push(numero);
         }
       }
-      if (errores.length > 0){
+      if (errores.length > 0) {
         return console.error(`Los valores '${errores}' ingresados no son números.`);
       }
       /*Como yo lo desarrollé:
@@ -568,21 +568,92 @@
         impares: arr.filter(num => num % 2 === 1)
       });
     }
-    devolverParesImpares([1,'4', true, {}]);        // Los valores '4,true,[object Object]' ingresados no son números.
-    devolverParesImpares([1,5,8,34,2,7,11,73,88]);  // {pares: Array(4), impares: Array(5)}
+    devolverParesImpares([1, '4', true, {}]);        // Los valores '4,true,[object Object]' ingresados no son números.
+    devolverParesImpares([1, 5, 8, 34, 2, 7, 11, 73, 88]);  // {pares: Array(4), impares: Array(5)}
 
 
     /* 24) Programa una función que dado un arreglo de números devuelva un objeto con dos arreglos, el primero tendrá los numeros ordenados en forma ascendente y el segundo de forma descendiente, pe. miFuncion([7, 5,7,8,6]) devolverá { asc: [5,6,7,7,8], desc: [8,7,7,6,5] }*/
     console.info('----- Ejercicio 24 -----')
+    const ordenaArray = (arr = undefined) => {
+      if (arr === undefined) return console.warn('No ingresaste un arreglo de números.');
+
+      if (!(arr instanceof Array)) return console.error('El valor que ingresaste no es un arreglo.');
+
+      if (arr.length === 0) return console.error('El areglo está vacío.');
+
+      let errores = [];
+
+      for (let numero of arr) {
+        if (typeof numero !== 'number') {
+          errores.push(numero);
+        }
+      }
+      if (errores.length > 0) {
+        return console.error(`Los valores '${errores}' ingresados no son números.`);
+      }
+
+      return console.info({
+        arr,
+        asc: [...arr.sort((a, b) => a - b)],
+        desc: [...arr.sort((a, b) => b - a)]
+      });
+    }
+    ordenaArray([5, 8, 2, 56, 23, 45, 1, 90, 43, 11]);  // {arr: Array(10), asc: Array(10), desc: Array(10)}
+
+
 
 
     /* 25) Programa una función que dado un arreglo de elementos, elimine los duplicados, pe. miFuncion(["x", 10, "x", 2, "10", 10, true, true]) devolverá ["x", 10, 2, "10", true]  */
     console.info('----- Ejercicio 25 -----')
+    const eliminaDuplicados = (arr = undefined) => {
+      if (arr === undefined) return console.warn('No ingresaste un arreglo.');
+
+      if (!(arr instanceof Array)) return console.error('El valor que ingresaste no es un arreglo.');
+
+      if (arr.length === 0) return console.error('El areglo está vacío.');
+
+      if (arr.length === 1) return console.warn('El array debe tener al menos dos elementos.')
+
+      return console.info({
+        original: arr,
+        sinDuplicados: [...new Set(arr)]  // arr.filter((value, index, self) => self.indexOf(value) === index)
+      });
+    }
+    eliminaDuplicados();
+    eliminaDuplicados(["x", 10, "x", 2, "10", 10, true, true])  // {original: Array(8), sinDuplicados: Array(5)}
 
 
     /* 26) Programa una función que dado un arreglo de números obtenga el promedio, pe. promedio([9,8,7,6,5,4,3,2,1,0]) devolverá 4.5 */
     console.info('----- Ejercicio 26 -----')
+    const devolverPromedio = (arr = undefined) => {
+      if (arr === undefined) return console.warn('No ingresaste un arreglo de números.');
 
+      if (!(arr instanceof Array)) return console.error('El valor que ingresaste no es un arreglo.');
+
+      if (arr.length === 0) return console.error('El areglo está vacío.');
+
+      let errores = [];
+      for (let numero of arr) {
+        if (typeof numero !== 'number') {
+          errores.push(numero);
+        }
+      }
+      if (errores.length > 0) {
+        return console.error(`Los valores '${errores}' ingresados no son números.`);
+      }
+
+      return console.info(
+        arr.reduce((acumulador, num, index, arr) => {
+          acumulador += num;
+          if (index === arr.length - 1) {
+            return `El promedio de ${arr.join(" + ")} es ${acumulador / arr.length}`;
+          } else {
+            return acumulador;
+          }
+        }
+        ));
+    }
+    devolverPromedio([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
 
     /* 27) Programa una clase llamada Pelicula.
         La clase recibirá un objeto al momento de instanciarse con los siguentes datos: id de la película en IMDB, titulo, director, año de estreno, país o países de origen, géneros y calificación en IMBD.
@@ -602,6 +673,169 @@
         * Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
         */
     console.info('----- Ejercicio 27 -----')
+    class Pelicula {
+
+      constructor({ id, titulo, director, estreno, pais, generos, calificacion}) {
+        this.id = id;
+        this.titulo = titulo;
+        this.director = director;
+        this.estreno = estreno;
+        this.pais = pais;
+        this.generos = generos;
+        this.calificacion = calificacion;
+
+        this.validarIMDB(id);
+        this.validarTitulo(titulo);
+        this.validarDirector(director);
+        this.validarEstreno(estreno);
+        this.validarPais(pais);
+        this.validarGeneros(generos);
+        this.validarCalificacion(calificacion);
+      }
+
+      static get listaGeneros() {
+        return (['Action', 'Adult', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family', 'Fantasy', 'Film Noir', 'Game-Show', 'History', 'Horror', 'Musical', 'Music', 'Mystery', 'News', 'Reality-TV', 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Talk-Show', 'Thriller', 'War', 'Western']);
+      }
+
+      static generosAceptados() {
+        return console.info(`Los géneros aceptados son: ${Pelicula.listaGeneros.join(", ")}`);
+      }
+
+      validarCadena(propiedad, valor) {
+        if (!valor) return console.warn(`${propiedad} "${valor}" esta vacío`);
+        if (typeof valor !== 'string') return console.error(`${propiedad} "${valor}" ingresado, No es una cadena de texto`);
+        return true;
+      }
+
+      validarLongitudCadena(propiedad, valor, longitud) {
+        if (valor.length > longitud) return console.error(`${propiedad} "${valor}" excede el número de caracteres permitidos (${longitud}).`);
+        return true;
+      }
+
+      validarNumero(propiedad, valor) {
+        if (!valor) return console.warn(`${propiedad} "${valor}" esta vacío`);
+        if (typeof valor !== 'number') return console.error(`${propiedad} "${valor}" ingresado, No es un número`);
+        return true;
+      }
+
+      validarArreglo(propiedad, valor) {
+        if (!valor) return console.warn(`${propiedad} "${valor}" está vacío.`)
+        if (!(valor instanceof Array)) return console.error(`${propiedad} "${valor}" ingresado, NO es un arreglo.`);
+        if (valor.length === 0) return console.error(`El valor "${valor}" no tiene datos.`);
+
+        for (let cadena of valor) {
+          if (typeof cadena !== "string") return console.error(`El valor "${cadena}" ingresado, NO es una cadena de texto.`)
+        }
+        return true;
+      }
+
+      validarIMDB(id) {
+        if (this.validarCadena("IMBD id", id)) {
+          if (!(/^([a-z]){2}([0-9]){7}$/.test(id))) {
+            return console.error(`IMBD id "${id}" no es válido, debe tener 9 caracteres, los 2 primeros letras minúsculas, los 7 restantes números`);
+          }
+        }
+      }
+
+      validarTitulo(titulo) {
+        if (this.validarCadena("Título", titulo))
+          this.validarLongitudCadena("Título", titulo, 100);
+      }
+
+      validarDirector(director) {
+        if (this.validarCadena("Director", director))
+          this.validarLongitudCadena("Director", director, 50);
+      }
+
+      validarEstreno(estreno) {
+        if (this.validarNumero("Año de Estreno", estreno)) {
+          let today = new Date();
+          let anio = parseInt(estreno)
+          if (anio < 1895 || anio > today.getFullYear()) {
+            return console.error(`Año "${anio}" no válido, tiene que estar entre 1895 y el año actual`)
+          }
+        }
+      }
+
+      validarPais(pais) {
+        this.validarArreglo('País', pais);
+      }
+
+      validarGeneros(generos) {
+       let errores = [];
+       if (this.validarArreglo('Géneros', generos)) {
+        for(let genero of generos){
+          //console.log(genero, Pelicula.listaGeneros.includes(genero));
+          if (!Pelicula.listaGeneros.includes(genero)){
+            errores.push(genero);
+          }
+        }
+        if (errores.length > 0) {
+          console.error(`Los géneros "${errores}" son incorrectos.`);
+          Pelicula.generosAceptados();
+        }
+       }
+      }
+
+      validarCalificacion(calificacion) {
+        if (this.validarNumero("Calificación", calificacion)) {
+          return (calificacion < 0 || calificacion > 10)
+          ? console.error(`La calificación tiene que estar en un rango entre 0 y 10.`)
+          : this.calificacion = calificacion.toFixed(1);
+        }
+      }
+
+      // Crea un método que devuelva toda la ficha técnica de la película.
+      fichaTecnica() {
+        console.info(`Ficha Técnica: \nIMBD: ${this.id} \nTítulo: ${this.titulo} \nDirector: ${this.director} \nAño de estreno: ${this.estreno} \nPaís/es: ${this.pais.join(", ")} \nGénero/s: ${this.generos.join(", ")} \nCalificación: ${this.calificacion}`)
+      }
+
+    }
+    /*
+    let acorralado = new Pelicula({
+      id: 'aa1111111',
+      titulo: "Acorralado",
+      director: "Ted Kotcheff",
+      estreno: 1982,
+      pais: ["Estados Unidos"],
+      generos: ["Action", "Adventure", "Thriller"],
+      calificacion: 7.7
+    })
+    Pelicula.generosAceptados();
+    acorralado.fichaTecnica();
+    */
+    const misPelis = [
+    {
+      id:"tt0758758",
+      titulo:"Into the Wild",
+      director:"Sean Penn",
+      estreno: 2007,
+      pais: ["USA"],
+      generos: ["Adventure", "Biography", "Drama"],
+      calificacion: 8.1
+    },
+    {
+      id:"tt0479143",
+      titulo:"Rocky Balboa",
+      director:"Sylvester Stallone",
+      estreno: 2006,
+      pais: ["USA"],
+      generos: ["Action", "Drama", "Sport"],
+      calificacion: 7.1
+    },
+    {
+      id:"tt0468569",
+      titulo:"The Dark Knight",
+      director:"Chistopher Nolan",
+      estreno: 2008,
+      pais: ["USA", "UK"],
+      generos: ["Action", "Crime", "Drama"],
+      calificacion: 9.0
+    },
+    ];
+
+    misPelis.forEach(el => new Pelicula(el).fichaTecnica());
+
   </script>
 </body>
 
