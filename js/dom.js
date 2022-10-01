@@ -59,7 +59,7 @@ console.log(document.querySelectorAll(".card")[2]);
 console.log(document.querySelector("#menu li"));
 console.log(document.querySelectorAll("#menu li")); */
 /*
-  
+
 
 
 
@@ -477,13 +477,13 @@ console.log($divsEventos);
 
 $divsEventos.forEach((div) => {
   //Fase de burbuja
-  //div.addEventListener("click", flujoEventos);
-  //div.addEventListener("click", flujoEventos, false);
+  //div.addEventListener("click", flujoEventos);          // Fase por defecto.
+  //div.addEventListener("click", flujoEventos, false);   // Fase por defecto.
   //Fase de captura
-  //div.addEventListener("click", flujoEventos, true);
+  //div.addEventListener("click", flujoEventos, true);    // Del padre al hijo.
   div.addEventListener("click", flujoEventos, {
-    capture: false,
-    once: true,
+    capture: false,  // Fase de burbuja, irá desde el 3 (interno) a 1 (externo), de hijo a padre.
+    once: true,  // Para que se ejecute una sola vez.
   });
 }); */
 /*
@@ -539,7 +539,9 @@ $linkEventos.addEventListener("click", (e) => {
 }
 
 document.addEventListener("click", (e) => {
-  if (e.target.matches(".eventos-flujo div")) {
+
+
+  if (e.target.matches(".eventos-flujo div")) {       // matches busca un selector válido.
     flujoEventos(e);
   }
 
@@ -566,37 +568,37 @@ Es un error frecuente usar load cuando DOMContentLoaded es mucho más apropiado.
 
 Peticiones asíncronas pausan el parseo del DOM.
 */
-/* window.addEventListener("resize", (e) => {
+/*window.addEventListener("resize", (e) => {  // evento resize, cambio en el tamaño.
   console.clear();
   console.log("********** Evento Resize **********");
-  console.log(window.innerWidth);
-  console.log(window.innerHeight);
-  console.log(window.outerWidth);
-  console.log(window.outerHeight);
+  console.log(window.innerWidth);  // Tamaño del ancho del viewport.
+  console.log(window.innerHeight);  // Tamaño del alto del viewport.
+  console.log(window.outerWidth);  // Tamaño del ancho de la ventana del navegador.
+  console.log(window.outerHeight);  // Tamaño del alto de la ventana del navegador.
   console.log(e);
 });
 
-window.addEventListener("scroll", (e) => {
+window.addEventListener("scroll", (e) => {   // evento scroll, cambio con el scroll del mouse o las flechas del cursor.
   console.clear();
   console.log("********** Evento Scroll **********");
-  console.log(window.scrollX);
-  console.log(window.scrollY);
+  console.log(window.scrollX);  // tamaño del scroll horizontal.
+  console.log(window.scrollY);  // tamaño del scroll vertical.
   console.log(e);
 });
 
-window.addEventListener("load", (e) => {
+window.addEventListener("load", (e) => {  // evento load, coordenada que empieza a dibujarse el navegador, se origina cuando haya terminado de cargarse.
   console.log("********** Evento Load **********");
-  console.log(window.screenX);
-  console.log(window.screenY);
+  console.log(window.screenX);  //  horizontal.
+  console.log(window.screenY);  //  vertical.
   console.log(e);
 });
 
-document.addEventListener("DOMContentLoaded", (e) => {
+document.addEventListener("DOMContentLoaded", (e) => {  // evento DOMContentLoaded, es más rápido que el load
   console.log("********** Evento DOMContentLoaded **********");
   console.log(window.screenX);
   console.log(window.screenY);
   console.log(e);
-}); */
+});*/
 /*
 
 
@@ -616,15 +618,15 @@ let ventana;
 
 $btnAbrir.addEventListener(
   "click",
-  (e) => (ventana = window.open("https://jonmircha.com"))
+  (e) => (ventana = window.open("https://jonmircha.com"))  // Abrir una ventana con el enlace.
 );
 
 $btnCerrar.addEventListener("click", (e) => {
   //window.close();
-  ventana.close();
+  ventana.close();                                          // cierra la ventana que abrió.
 });
 
-$btnImprimir.addEventListener("click", (e) => window.print()); */
+$btnImprimir.addEventListener("click", (e) => window.print());  // imprimir la página(window). */
 /*
 
 
@@ -633,34 +635,37 @@ $btnImprimir.addEventListener("click", (e) => window.print()); */
 
 */
 /* **********     Curso JavaScript: 79. BOM: Objetos: URL, Historial y Navegador - #jonmircha     ********** */
-/* console.log("********** Objeto URL (location) **********");
-console.log(location);
-console.log(location.origin);
-console.log(location.protocol);
-console.log(location.host);
-console.log(location.hostname);
-console.log(location.port);
-console.log(location.href);
-console.log(location.hash);
-console.log(location.search);
-console.log(location.pathname);
-//location.reload();
+/*
+console.log("********** Objeto URL (location) **********");
+console.log(location);             // Location {ancestorOrigins: DOMStringList, href: 'http://127.0.0.1:5500/07_dom.html', origin: 'http://127.0.0.1:5500', protocol: 'http:', host: '127.0.0.1:5500', …}
+console.log(location.origin);      // http://127.0.0.1:5500
+console.log(location.protocol);    // http:
+console.log(location.host);        // 127.0.0.1:5500
+console.log(location.hostname);    // 127.0.0.1
+console.log(location.port);        // 5500
+console.log(location.href);        // http://127.0.0.1:5500/07_dom.html
+console.log(location.hash);        // detectar el valor de la url que está detrás de un hash (#contacto)
+console.log(location.search);      // si detecta el paso de los parámetros sale en la propiedad search  (?nombre=Jon)
+console.log(location.pathname);    // /07_dom.html
+//location.reload();               //  recarga la página.
 
 console.log("********** Objeto Historial (history) **********");
-console.log(history);
-console.log(history.length);
-//history.forward(1);
-//history.go(-3);
-//history.back(2);
+console.log(history);              // History {length: 1, scrollRestoration: 'auto', state: null}
+console.log(history.length);       // 1 ,hace referencia a cuantas páginas puedo acceder hacia atrás o hacia delante en el historial.
+//history.forward(1);              // hacia delante 1 vez en el historial.
+//history.go(-3);                  // hacia donde quieres ir positivo adelante, negativo atrás.
+//history.back(2);                 // hacia atrás 2 veces en el historial.
 
 console.log("********** Objeto Navegador (navigator) **********");
-console.log(navigator);
-console.log(navigator.connection);
-console.log(navigator.geolocation);
-console.log(navigator.mediaDevices);
-console.log(navigator.mimeTypes);
-console.log(navigator.onLine);
-console.log(navigator.serviceWorker);
-console.log(navigator.storage);
-console.log(navigator.usb);
-console.log(navigator.userAgent); */
+console.log(navigator);               // Navigator {vendorSub: '', productSub: '20030107', vendor: 'Google Inc.', maxTouchPoints: 0, scheduling: Scheduling, …}
+console.log(navigator.connection);    // NetworkInformation {onchange: null, effectiveType: '4g', rtt: 50, downlink: 10, saveData: false}
+console.log(navigator.geolocation);   // Geolocation {}
+console.log(navigator.mediaDevices);  // MediaDevices {ondevicechange: null}
+console.log(navigator.mimeTypes);     // MimeTypeArray {0: MimeType, 1: MimeType, application/pdf: MimeType, text/pdf: MimeType, length: 2}
+console.log(navigator.onLine);        // true
+console.log(navigator.serviceWorker); // ServiceWorkerContainer {controller: null, ready: Promise, oncontrollerchange: null, onmessage: null, onmessageerror: null}
+console.log(navigator.storage);       // StorageManager {}
+console.log(navigator.usb);           // USB {onconnect: null, ondisconnect: null}
+console.log(navigator.userAgent);     // Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36
+*/
+
