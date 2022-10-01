@@ -12,7 +12,7 @@
   <script>
     /* **********     Curso JavaScript: 44. Temporizadores (setTimeout & setInterval) - #jonmircha     ********** */
 
-    /* console.log("inicio");
+    /*console.log("inicio");
 
     setTimeout(() => {
       console.log("Ejecutando un setTimeout, esto se ejecuta una sóla vez");
@@ -20,7 +20,7 @@
 
     setInterval(() => {
       console.log("Ejecutando un setInterval, esto se ejecuta indefinidaente cada cierto intervalo de tiempo");
-    }, 1000); */
+    }, 1000);*/
 
     /* let temporizador = setTimeout(() => {
       console.log(new Date().toLocaleTimeString());
@@ -50,53 +50,55 @@
      Operaciones Bloqueantes y No Bloqueantes.
      Operaciones Síncronas y Asíncronas.
 
-     Javascript usa un modelo asíncrono y no bloqueante, con un loop de eventos implementado en un sólo hilo, (single thread) para operaciones de entrada y salida (input/output).
+     Javascript usa un modelo asíncrono y no bloqueante,
+     con un loop de eventos implementado en un sólo hilo,
+     (single thread) para operaciones de entrada y salida (input/output).
      */
 
 
-    /* //Código Síncrono Bloquenate
-    (() => {
-      console.log("Código Síncrono");
-      console.log("Inicio");
+    //Código Síncrono Bloquenate
+    /* (() => {
+       console.log("Código Síncrono");
+       console.log("Inicio");
 
-      function dos() {
-        console.log("Dos");
-      }
+       function dos() {
+         console.log("Dos");
+       }
 
-      function uno() {
-        console.log("Uno");
-        dos();
-        console.log("Tres");
-      }
+       function uno() {
+         console.log("Uno");
+         dos();
+         console.log("Tres");
+       }
 
-      uno();
-      console.log("Fin");
-    })();
+       uno();
+       console.log("Fin");
+     })();
 
-    console.log("********************");
+     console.log("********************");
 
-    //Código Asíncrono No Bloquenate
-    (() => {
-      console.log("Código Asíncrono");
-      console.log("Inicio");
+     //Código Asíncrono No Bloquenate
+     (() => {
+       console.log("Código Asíncrono");
+       console.log("Inicio");
 
-      function dos() {
-        setTimeout(function () {
-          console.log("Dos");
-        }, 1000);
-      }
+       function dos() {
+         setTimeout(function () {
+           console.log("Dos");
+         }, 1000);
+       }
 
-      function uno() {
-        setTimeout(function () {
-          console.log("Uno");
-        }, 0);
-        dos();
-        console.log("Tres");
-      }
+       function uno() {
+         setTimeout(function () {
+           console.log("Uno");
+         }, 0);
+         dos();
+         console.log("Tres");
+       }
 
-      uno();
-      console.log("Fin");
-    })(); */
+       uno();
+       console.log("Fin");
+     })(); */
 
 
 
@@ -104,7 +106,7 @@
 
     /* **********     Curso JavaScript: 46. Callbacks - #jonmircha     ********** */
 
-    /* function cuadradoCallback(value, callback) {
+    /*function cuadradoCallback(value, callback) {
       setTimeout(() => {
         callback(value, value * value);
       }, 0 | Math.random() * 1000);
@@ -131,7 +133,7 @@
           });
         });
       });
-    }); */
+    });*/
 
 
 
@@ -139,49 +141,49 @@
 
     /* **********     Curso JavaScript: 47. Promesas - #jonmircha     ********** */
 
-    /*     function cuadradoPromise(value) {
-          if (typeof value !== "number") {
-            return Promise.reject(`Error, el valor " ${value} " ingresado no es un número`);
-          }
+  /*  function cuadradoPromise(value) {
+      if (typeof value !== "number") {
+        return Promise.reject(`Error, el valor " ${value} " ingresado no es un número`);
+      }
 
-          return new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve({
-                value,
-                result: value * value
-              });
-            }, 0 | Math.random() * 1000);
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({
+            value,
+            result: value * value
           });
-        }
+        }, 0 | Math.random() * 1000);
+      });
+    }
 
-        cuadradoPromise(0)
-          .then(obj => {
-            //console.log(obj);
-            console.log('Inicio Promise');
-            console.log(`Promise: ${obj.value}, ${obj.result}`);
-            return cuadradoPromise(1);
-          })
-          .then(obj => {
-            console.log(`Promise: ${obj.value}, ${obj.result}`);
-            return cuadradoPromise(2);
-          })
-          .then(obj => {
-            console.log(`Promise: ${obj.value}, ${obj.result}`);
-            return cuadradoPromise(3);
-          })
-          .then(obj => {
-            console.log(`Promise: ${obj.value}, ${obj.result}`);
-            return cuadradoPromise("4");
-          })
-          .then(obj => {
-            console.log(`Promise: ${obj.value}, ${obj.result}`);
-            return cuadradoPromise(5);
-          })
-          .then(obj => {
-            console.log(`Promise: ${obj.value}, ${obj.result}`);
-            console.log('Fin Promise');
-          })
-          .catch(err => console.error(err)); */
+    cuadradoPromise(0)
+      .then(obj => {
+        //console.log(obj);
+        console.log('Inicio Promise');
+        console.log(`Promise: ${obj.value}, ${obj.result}`);
+        return cuadradoPromise(1);
+      })
+      .then(obj => {
+        console.log(`Promise: ${obj.value}, ${obj.result}`);
+        return cuadradoPromise(2);
+      })
+      .then(obj => {
+        console.log(`Promise: ${obj.value}, ${obj.result}`);
+        return cuadradoPromise(3);
+      })
+      .then(obj => {
+        console.log(`Promise: ${obj.value}, ${obj.result}`);
+        return cuadradoPromise(4);
+      })
+      .then(obj => {
+        console.log(`Promise: ${obj.value}, ${obj.result}`);
+        return cuadradoPromise(5);
+      })
+      .then(obj => {
+        console.log(`Promise: ${obj.value}, ${obj.result}`);
+        console.log('Fin Promise');
+      })
+      .catch(err => console.error(err));*/
 
 
 
@@ -189,7 +191,7 @@
 
     /* **********     Curso JavaScript: 48. Async - Await - #jonmircha     ********** */
 
-    /* function cuadradoPromise(value) {
+     /*function cuadradoPromise(value) {
       if (typeof value !== "number") {
         return Promise.reject(`Error, el valor " ${value} " ingresado no es un número`);
       }
@@ -217,7 +219,7 @@
         obj = await cuadradoPromise(2);
         console.log(`Async Function: ${obj.value}, ${obj.result}`);
 
-        obj = await cuadradoPromise("3");
+        obj = await cuadradoPromise(3);
         console.log(`Async Function: ${obj.value}, ${obj.result}`);
 
         obj = await cuadradoPromise(4);
@@ -247,7 +249,7 @@
         obj = await cuadradoPromise(8);
         console.log(`Async Function: ${obj.value}, ${obj.result}`);
 
-        obj = await cuadradoPromise("9");
+        obj = await cuadradoPromise(9);
         console.log(`Async Function: ${obj.value}, ${obj.result}`);
 
         obj = await cuadradoPromise(10);
@@ -257,9 +259,9 @@
       } catch (err) {
         console.error(err)
       }
-    }
+    }*/
 
-    funcionAsincronaExpresada(); */
+    funcionAsincronaExpresada();
   </script>
 </body>
 
