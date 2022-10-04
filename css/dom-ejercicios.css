@@ -124,10 +124,10 @@ video {
 }
 
 .menu a {
-  padding: 2rem;
+  padding: 1.3rem;
   width: inherit;
   display: block;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   text-decoration: none;
   color: var(--main-color);
   transition: all 0.3s ease;
@@ -137,6 +137,24 @@ video {
   font-weight: bold;
   color: var(--second-color);
   background-color: var(--main-modal-color);
+}
+
+/* **********     Reloj     ********** */
+
+#reloj {
+  width: 400px;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--second-color);
+  color: rgba(67, 255, 4, 0.599);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35px;
+  margin-bottom: 35px;
+  font-size: 5rem;
+  border-radius: 15px;
 }
 
 /* **********     Eventos del Teclado     ********** */
