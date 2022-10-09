@@ -3,7 +3,7 @@
 const d = document,
 w = window;
 
-export default function  scrollTopButton(btn) {
+export default function scrollTopButton(btn) {
   const $scollBtn = d.querySelector(btn);
 
   w.addEventListener("scroll", (e) => {
