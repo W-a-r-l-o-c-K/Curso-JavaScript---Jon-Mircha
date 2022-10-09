@@ -8,8 +8,8 @@ export default function darkTheme(btn, classDark) {
 
   // console.log($selectors);
 
-  let moon = "🌙",
-    sun = "☀️";
+  let moon = "🌚",
+    sun = "😎";
 
     const lightMode = () => {
       $selectors.forEach(el => el.classList.remove(classDark));
@@ -35,7 +35,7 @@ export default function darkTheme(btn, classDark) {
     });
 
     /* **********     Curso JavaScript: 89. DOM: Ejercicios Prácticos | API localStorage - #jonmircha     ********** */
-    
+
     d.addEventListener("DOMContentLoaded", (e) => {
       if (ls.getItem("theme") === null) ls.setItem("theme", "light");
       if (ls.getItem("theme") === "light") lightMode();
