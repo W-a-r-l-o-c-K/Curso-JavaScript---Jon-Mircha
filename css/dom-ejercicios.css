@@ -334,7 +334,7 @@ video {
   border-radius: 50%;
   border: thin solid #000;
   text-decoration: none;
-  background-color: #fff;
+  background-color:  #f7df1e;
   color: #000;
   transition: all 0.3s ease;
 }
