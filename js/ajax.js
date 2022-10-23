@@ -1,28 +1,28 @@
 /* **********     Curso JavaScript: 106. AJAX: Objeto XMLHttpRequest - #jonmircha     ********** */
 (() => {
-  const xhr = new XMLHttpRequest(),
-    $xhr = document.getElementById("xhr"),
-    $fragment = document.createDocumentFragment();
+  const xhr = new XMLHttpRequest(),  // guardamos en una variable un nuevo objeto XMLHttpRequest
+    $xhr = document.getElementById("xhr"),          // guardamos en una variable la lista ordenada
+    $fragment = document.createDocumentFragment();  // gardamos en una variable un document fragment
 
-  xhr.addEventListener("readystatechange", (e) => {
-    if (xhr.readyState !== 4) return;
+  xhr.addEventListener("readystatechange", (e) => {  // ponemos el XMLHttpRequest a la escucha con readystetechange
+    if (xhr.readyState !== 4) return;                // si xhr.readyState es diferente de 4 retorna
 
     //console.log(xhr);
 
-    if (xhr.status >= 200 && xhr.status < 300) {
+    if (xhr.status >= 200 && xhr.status < 300) {  // si xhr.status es moyor o igual que 200 y menor de 300:
       //console.log("éxito");
       //console.log(xhr.responseText);
       //$xhr.innerHTML = xhr.responseText;
-      let json = JSON.parse(xhr.responseText);
+      let json = JSON.parse(xhr.responseText);  // guarda en la variable json la respuesta de xhr parseada a JSON
       //console.log(json);
 
-      json.forEach((el) => {
-        const $li = document.createElement("li");
-        $li.innerHTML = `${el.name} -- ${el.email} -- ${el.phone}`;
-        $fragment.appendChild($li);
+      json.forEach((el) => {                         // por cada elemento de json:
+        const $li = document.createElement("li");                   // guarda en $li un nuevo elemento de tipo "li"
+        $li.innerHTML = `${el.name} -- ${el.email} -- ${el.phone}`; // añade al $li el innerHTML con elemento.nombre, elemento.email, elemento.phone
+        $fragment.appendChild($li); // con el fragmento vamos añadiendo los hijos li
       });
 
-      $xhr.appendChild($fragment);
+      $xhr.appendChild($fragment);  // añade a xhr el hijo fragment con los li
     } else {
       //console.log("error");
       let message = xhr.statusText || "Ocurrió un error";
