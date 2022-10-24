@@ -49,40 +49,40 @@
     /* **********     Curso JavaScript: 115. APIs REST: CRUD con AJAX (1/2) - #jonmircha     ********** */
     /* **********     Curso JavaScript: 116. APIs REST: CRUD con AJAX (2/2) - #jonmircha     ********** */
     const d = document,
-      $table = d.querySelector(".crud-table"),
-      $form = d.querySelector(".crud-form"),
-      $title = d.querySelector(".crud-title"),
-      $template = d.getElementById("crud-template").content,
-      $fragment = d.createDocumentFragment();
+      $table = d.querySelector(".crud-table"),                 // Variable de la tabla
+      $form = d.querySelector(".crud-form"),                   // Variable del formulario
+      $title = d.querySelector(".crud-title"),                 // Variable del titulo para poder cambiarlo
+      $template = d.getElementById("crud-template").content,   // Variable del template
+      $fragment = d.createDocumentFragment();                  // Variable fragment para hacer una sola insercion
 
-    const ajax = (options) => {
-      let { url, method, success, error, data } = options;
-      const xhr = new XMLHttpRequest();
+    const ajax = (options) => {                                 // creamos una función expresada con las opciones de CRUD
+      let { url, method, success, error, data } = options;      // url, metodo de envío, éxito, error, y la data correspondiente
+      const xhr = new XMLHttpRequest();                         // creamos el objeto XMLHttpRequest
 
-      xhr.addEventListener("readystatechange", e => {
-        if (xhr.readyState !== 4) return;
+      xhr.addEventListener("readystatechange", e => {           // le ponemos un listener con readystatechange
+        if (xhr.readyState !== 4) return;                       // solo si el readystate es 4 ejecuta la programación
 
-        if (xhr.status >= 200 && xhr.status < 300) {
-          let json = JSON.parse(xhr.responseText);
-          success(json);
+        if (xhr.status >= 200 && xhr.status < 300) {            // si el status esta entre 200 y 299
+          let json = JSON.parse(xhr.responseText);              // guarda en la variable json  el responsetext en formato JavaScript
+          success(json);                                        // funcion exitosa con el json
         } else {
-          let message = xhr.statusText || "Ocurrió un error";
+          let message = xhr.statusText || "Ocurrió un error";   // Manejo de error
           error(`Error ${xhr.status}: ${message}`);
         }
       });
 
-      xhr.open(method || "GET", url);
-      xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");
-      xhr.send(JSON.stringify(data));
+      xhr.open(method || "GET", url);                   // ejecutamos el metodo open, y si viene vacío le ponemos el metodo GET
+      xhr.setRequestHeader("Content-type", "application/json; charset=utf-8");  // especificamos el tipo de contenido en la cabecera para decirle que es un json
+      xhr.send(JSON.stringify(data));                   // finalmente mandamos con el metodo send la data en formato cadena de texto
     }
 
-    const getAll = () => {
-      ajax({
-        url: "http://localhost:5555/santos",
-        success: (res) => {
+    const getAll = () => {                    // funcion expresada para traer todo
+      ajax({                                     // llamamos a la función ajax
+        url: "http://localhost:5555/santos",       // le pasamos la url
+        success: (res) => {                        // en caso de exito
           console.log(res);
 
-          res.forEach(el => {
+          res.forEach(el => {                                            // por cada elemento lo ponemos en el template
             $template.querySelector(".name").textContent = el.nombre;
             $template.querySelector(".constellation").textContent = el.constelacion;
             $template.querySelector(".edit").dataset.id = el.id;
@@ -90,32 +90,32 @@
             $template.querySelector(".edit").dataset.constellation = el.constelacion;
             $template.querySelector(".delete").dataset.id = el.id;
 
-            let $clone = d.importNode($template, true);
-            $fragment.appendChild($clone);
+            let $clone = d.importNode($template, true);                // nos creamos un clon con el template
+            $fragment.appendChild($clone);                             // se lo agregamos al fragment
           });
 
-          $table.querySelector("tbody").appendChild($fragment);
+          $table.querySelector("tbody").appendChild($fragment);        // agregamos el fragment a la tabla
         },
         error: (err) => {
-          console.log(err);
+          console.log(err);                                                      // en caso de error
           $table.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`);
         }
       })
     }
 
-    d.addEventListener("DOMContentLoaded", getAll);
+    d.addEventListener("DOMContentLoaded", getAll);  // ponemos un listener para cuando se carge el DOM y llamamos a getAll
 
-    d.addEventListener("submit", e => {
-      if (e.target === $form) {
-        e.preventDefault();
+    d.addEventListener("submit", e => {              // ponemos el submit a la escucha
+      if (e.target === $form) {                      // si el target es en el form
+        e.preventDefault();                          // prevenimos el comportamiento por defecto
 
-        if (!e.target.id.value) {
+        if (!e.target.id.value) {                    // si no existe el valor
           //Create - POST
           ajax({
             url: "http://localhost:5555/santos",
             method: "POST",
-            success: (res) => location.reload(),
-            error: (err) => $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),
+            success: (res) => location.reload(),            // recargamos la página
+            error: (err) => $form.insertAdjacentHTML("afterend", `<p><b>${err}</b></p>`),  // manejo del error
             data: {
               nombre: e.target.nombre.value,
               constelacion: e.target.constelacion.value
@@ -137,7 +137,7 @@
       }
     });
 
-    d.addEventListener("click", e => {
+    d.addEventListener("click", e => {                   // programamos el evento click a los botones editar y eliminar
       if (e.target.matches(".edit")) {
         $title.textContent = "Editar Santo";
         $form.nombre.value = e.target.dataset.name;
