@@ -15,14 +15,14 @@ Este repositorio incluye:
 
 Adicionalmente a este repositorio por una pequeña aportación puedes acceder a:
 
-- Toda la teoría referente a este curso que encuentras en mi [blog](https://jonmircha.com/blog) en formato _MarkDown_.
+- Toda la teoría referente a este curso que encuentras en su [blog](https://jonmircha.com/blog) en formato _MarkDown_.
 - El código _JavaScript_ que da solución a los ejercicios propuestos en el curso.
 - Puedes adquirir el repositorio _PREMIUM_ [aquí](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=6B6FCUL4SKSJN).
 
-## Mis Redes Sociales
+## Redes Sociales de Jon Mircha
 
-- 🔔 Suscríbete al canal https://youtube.com/jonmircha?sub_confirmation=1 🤓
-- 👉 Visita mi sitio web https://jonmircha.com/ 💻
-- 🌮 ¿Me invítas un taco? https://www.paypal.me/jonmircha
-- 📫 Suscríbete a mi lista de correo https://tinyletter.com/jonmircha/
+- 🔔 Suscríbete a su canal https://youtube.com/jonmircha?sub_confirmation=1 🤓
+- 👉 Visita su sitio web https://jonmircha.com/ 💻
+- 🌮 ¿Le invítas un taco? https://www.paypal.me/jonmircha
+- 📫 Suscríbete a su lista de correo https://tinyletter.com/jonmircha/
 # Curso-JavaScript---Jon-Mircha
