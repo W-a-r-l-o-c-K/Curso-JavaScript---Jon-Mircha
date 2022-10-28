@@ -9,7 +9,7 @@ Este repositorio incluye:
 - Toda la estructura de archivos y carpetas que usarás en el curso.
 - Todos los códigos y recursos ajenos a _JavaScript_ para hacer el curso como imágenes, archivos _HTML_, _CSS_, _PHP_, _JSON_, etc.
 - Todo el código _JavaScript_ de las clases teóricas.
-- El código _JavaScript_ de los ejercicios prácticos que voy desarrollando como alumno.
+- El código _JavaScript_ de los ejercicios prácticos que voy desarrollando como alumno. 
 
 ## Repositorio _PREMIUM_
 
