@@ -124,6 +124,7 @@
   <script>
     /* ********** Curso JavaScript: 139. WordPress REST API y Fetch (1 / 5) - #jonmircha ********** */
     const d = document,
+    w = window,
     $site = d.getElementById("site"),
     $posts = d.getElementById("posts"),
     $loader = d.querySelector(".loader"),
@@ -136,11 +137,14 @@
     PAGES = `${API_WP}/pages`,
     CATEGORIES = `${API_WP}/categories`;
 
+    let page = 1,
+      perPage = 10;
+
     function getSiteDAta() {
       fetch(SITE)
         .then(res => res.ok ? res.json() :Promise.reject(res))
         .then(json => {
-          console.log(json)
+          //console.log(json)
           $site.innerHTML= `
           <h3>Sitio Web</h3>
           <h2>
@@ -159,11 +163,10 @@
 
     function getPosts() {
       $loader.style.display = "block";
-      fetch(POSTS)
+      fetch(`${POSTS}&page=${page}&per_page=${perPage}`)
         .then(res => res.ok ? res.json() :Promise.reject(res))
         .then(json => {
-          console.log(json);
-
+          //console.log(json);
 
           json.forEach(el=> {
             let categories = "",
@@ -172,7 +175,8 @@
             el._embedded["wp:term"][0].forEach(el => categories += `<li>${el.name}</li>`);
             el._embedded["wp:term"][1].forEach(el => tags += `<li>${el.name}</li>`);
 
-            $template.querySelector(".post-image").src = el._embedded["wp:featuredmedia"][0].source_url;
+            $template.querySelector(".post-image").src = el._embedded["wp:featuredmedia"][0] ?
+              el._embedded["wp:featuredmedia"][0].source_url : "";
             $template.querySelector(".post-image").alt = el.title.rendered;
             $template.querySelector(".post-title").innerHTML = el.title.rendered;
             $template.querySelector(".post-author").innerHTML = `
@@ -212,6 +216,17 @@
       getPosts();
     });
 
+    w.addEventListener("scroll", e => {
+      const {scrollTop, clientHeight, scrollHeight} = d.documentElement;
+
+      //console.log(scrollTop, clientHeight, scrollHeight);
+
+      if (scrollTop + clientHeight >= scrollHeight) {
+        console.log("Cargar más posts");
+        page++;
+        getPosts();
+      }
+    });
 
     /* ********** Curso JavaScript: 140. WordPress REST API y Fetch (2 / 5) - #jonmircha ********** */
     /* ********** Curso JavaScript: 141. WordPress REST API y Fetch (3 / 5) - #jonmircha ********** */
